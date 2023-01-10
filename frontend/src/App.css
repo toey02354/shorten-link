@@ -32,10 +32,25 @@
   }
 }
 
-.card {
-  padding: 2em;
+.App {
+  max-width: 800px;
+  width: 100vw;
 }
 
-.read-the-docs {
-  color: #888;
+.shorten-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+}
+
+.shorten-input {
+  padding: 1rem 0.75rem;
+  border-radius: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.shorten-button {
+  background-color: #4f4f4f;
+  color: #d4d4d4;
 }
