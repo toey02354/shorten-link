@@ -6,9 +6,9 @@ interface IMessage {
   message: string;
 }
 
-const shortenPath =
-  "https://pants-sea-lion.cyclic.app/shorten" || location.href;
-// const shortenath = "http://localhost:4000/shorten" || location.href;
+// const shortenPath =
+//   "https://pants-sea-lion.cyclic.app/shorten" || location.href;
+const shortenPath = "http://localhost:4000/shorten" || location.href;
 
 function App() {
   const [message, setMessage] = useState<IMessage>({

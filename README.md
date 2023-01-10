@@ -2,7 +2,7 @@
 
 https://pants-sea-lion.cyclic.app/
 
-ลูกเล่นที่เพิ่มเช้ามาคือ หาก url มีใน databse อยู่แล้ว  
+ลูกเล่นที่เพิ่มเข้ามาคือ หาก url มีใน database อยู่แล้ว  
 จะส่ง shortUrl ที่มีอยู่แล้วไปให้จะไม่สร้างใหม่
 
 # Tech Stack

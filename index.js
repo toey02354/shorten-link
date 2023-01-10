@@ -36,9 +36,10 @@ app.get("/:shortUrl", async (req, res) => {
 });
 
 app.post("/shorten", async (req, res) => {
-  const fullUrl = eq.body.fullUrl;
-  const { shortUrl } = await ShortenUrl.findOne({ fullUrl });
-  if (shortUrl) res.send(shortUrl);
+  const fullUrl = req.body.fullUrl;
+  const result = await ShortenUrl.findOne({ fullUrl: fullUrl });
+  if (result && result.shortUrl) return res.send(result.shortUrl);
+
   try {
     const { shortUrl } = await ShortenUrl.create({ fullUrl });
     res.send(shortUrl);
@@ -46,7 +47,6 @@ app.post("/shorten", async (req, res) => {
     console.log(error);
     res.send("invalid url");
   }
-  //   res.send(JSON.stringify(req.body));
 });
 
 app.listen(PORT, () => {
