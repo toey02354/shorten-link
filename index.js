@@ -36,9 +36,11 @@ app.get("/:shortUrl", async (req, res) => {
 });
 
 app.post("/shorten", async (req, res) => {
-  console.log(req.body.fullUrl);
+  const fullUrl = eq.body.fullUrl;
+  const { shortUrl } = await ShortenUrl.findOne({ fullUrl });
+  if (shortUrl) res.send(shortUrl);
   try {
-    const { shortUrl } = await ShortenUrl.create({ fullUrl: req.body.fullUrl });
+    const { shortUrl } = await ShortenUrl.create({ fullUrl });
     res.send(shortUrl);
   } catch (error) {
     console.log(error);
