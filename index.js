@@ -29,11 +29,10 @@ app.get("/:shortUrl", async (req, res) => {
     const { fullUrl } = await ShortenUrl.findOne({
       shortUrl,
     });
-    res.redirect(301, fullUrl);
-    res.send(fullUrl);
+    return res.redirect(301, fullUrl);
   } catch (error) {
     console.log(error);
-    res.send("no url was found");
+    return res.send("no url was found");
   }
 });
 
@@ -45,10 +44,10 @@ app.post("/shorten", async (req, res) => {
 
   try {
     const { shortUrl } = await ShortenUrl.create({ fullUrl });
-    res.send(shortUrl);
+    return res.send(shortUrl);
   } catch (error) {
     console.log(error);
-    res.send("invalid url");
+    return res.send("invalid url");
   }
 });
 
