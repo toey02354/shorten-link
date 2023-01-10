@@ -55,6 +55,17 @@
   color: #d4d4d4;
 }
 
+.result-container{
+  display: flex;
+  margin: 0.5rem auto 0 auto;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.result-placeholder{
+  font-weight: 500;
+}
+
 .danger{
   color: red
 }
