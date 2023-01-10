@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import reactLogo from "./assets/react.svg";
 import "./App.css";
 
 interface IMessage {
@@ -18,20 +17,29 @@ function App() {
   });
   const urlRef = useRef<HTMLInputElement>(null);
 
+  const isValidUrl = (url: string) => {
+    try {
+      new URL(url);
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
+
   const submitUrl = async () => {
     setMessage({
       isWrong: false,
       message: "creating short url, please wait...",
     });
     const fullUrl = urlRef.current?.value;
-    // console.log(fullUrl);
 
-    if (!fullUrl || fullUrl.length == 0) {
+    if (!fullUrl || fullUrl.length == 0 || !isValidUrl(fullUrl)) {
       setMessage({ isWrong: true, message: "Invalid Url" });
       return;
     }
 
     try {
+      console.log(fullUrl);
       const result = await (
         await fetch(shortenPath, {
           method: "POST",
@@ -57,7 +65,7 @@ function App() {
       <h1>Shorten URL exam</h1>
       <div className="shorten-form-wrapper">
         <input
-          placeholder="enter url here"
+          placeholder="https://example.com (must have valid scheme, e.g. http https)"
           className="shorten-input"
           ref={urlRef}
         ></input>
