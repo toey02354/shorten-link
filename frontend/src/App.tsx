@@ -6,8 +6,6 @@ interface IMessage {
   message: string;
 }
 
-// const shortenPath =
-//   "https://pants-sea-lion.cyclic.app/shorten" || location.href;
 const shortenPath = "http://localhost:4000/shorten" || location.href;
 
 function App() {
@@ -39,7 +37,6 @@ function App() {
     }
 
     try {
-      console.log(fullUrl);
       const result = await (
         await fetch(shortenPath, {
           method: "POST",
@@ -47,21 +44,17 @@ function App() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            fullUrl: fullUrl,
+            fullUrl,
           }),
         })
       ).text();
-      // console.log(result);
       const currPath = location.href;
-      console.log(currPath.length - 1);
       const resultPath =
         currPath +
         (currPath.charAt(currPath.length - 1) == "/" ? result : "/" + result);
-      console.log(resultPath);
 
       setMessage({ isWrong: false, message: resultPath });
     } catch (error) {
-      // console.log(error);
       setMessage({ isWrong: true, message: "Something went wrong" });
     }
   };
