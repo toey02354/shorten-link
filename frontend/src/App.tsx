@@ -52,7 +52,13 @@ function App() {
         })
       ).text();
       // console.log(result);
-      const resultPath = location.href + "/" + result;
+      const currPath = location.href;
+      console.log(currPath.length - 1);
+      const resultPath =
+        currPath +
+        (currPath.charAt(currPath.length - 1) == "/" ? result : "/" + result);
+      console.log(resultPath);
+
       setMessage({ isWrong: false, message: resultPath });
     } catch (error) {
       // console.log(error);
