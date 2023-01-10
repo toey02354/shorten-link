@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require('cors')
 const mongoose = require("mongoose");
 const ShortenUrl = require("./model/ShortenUrl");
 
@@ -8,6 +9,7 @@ const PORT = 4000;
 const MG_CONNECTION = process.env.MG_CONNECTION;
 const connectionString = MG_CONNECTION;
 
+app.use(cors())
 app.use(express.urlencoded());
 app.use(express.json());
 app.use(express.static('./frontend/dist'))
