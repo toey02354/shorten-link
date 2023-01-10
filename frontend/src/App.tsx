@@ -7,8 +7,9 @@ interface IMessage {
   message: string;
 }
 
-// const path = "https://pants-sea-lion.cyclic.app/shorten" || location.href;
-const path = "http://localhost:4000/shorten" || location.href;
+const shortenPath =
+  "https://pants-sea-lion.cyclic.app/shorten" || location.href;
+// const shortenath = "http://localhost:4000/shorten" || location.href;
 
 function App() {
   const [message, setMessage] = useState<IMessage>({
@@ -23,7 +24,7 @@ function App() {
       message: "creating short url, please wait...",
     });
     const fullUrl = urlRef.current?.value;
-    console.log(fullUrl);
+    // console.log(fullUrl);
 
     if (!fullUrl || fullUrl.length == 0) {
       setMessage({ isWrong: true, message: "Invalid Url" });
@@ -32,7 +33,7 @@ function App() {
 
     try {
       const result = await (
-        await fetch(path, {
+        await fetch(shortenPath, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -42,10 +43,11 @@ function App() {
           }),
         })
       ).text();
-      console.log(result);
-      setMessage({ isWrong: false, message: result });
+      // console.log(result);
+      const resultPath = location.href + "/" + result;
+      setMessage({ isWrong: false, message: resultPath });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setMessage({ isWrong: true, message: "Something went wrong" });
     }
   };

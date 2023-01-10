@@ -28,7 +28,7 @@ app.get("/:shortUrl", async (req, res) => {
     const { fullUrl } = await ShortenUrl.findOne({
       shortUrl: req.params.shortUrl,
     });
-    res.redirect(fullUrl);
+    res.status(301).redirect(fullUrl);
     res.send(fullUrl);
   } catch (error) {
     res.send("no url was found");
@@ -36,11 +36,12 @@ app.get("/:shortUrl", async (req, res) => {
 });
 
 app.post("/shorten", async (req, res) => {
-  // console.log(req.body.fullUrl);
+  console.log(req.body.fullUrl);
   try {
     const { shortUrl } = await ShortenUrl.create({ fullUrl: req.body.fullUrl });
     res.send(shortUrl);
   } catch (error) {
+    console.log(error);
     res.send("invalid url");
   }
   //   res.send(JSON.stringify(req.body));
