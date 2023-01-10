@@ -10,6 +10,7 @@ const connectionString = MG_CONNECTION;
 
 app.use(express.urlencoded());
 app.use(express.json());
+app.use(express.static('./frontend/dist'))
 
 mongoose.connect(connectionString, {
   useNewUrlParser: true,
