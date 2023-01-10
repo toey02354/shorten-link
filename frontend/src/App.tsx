@@ -72,9 +72,13 @@ function App() {
         <div className="result-container">
           <div className="result-placeholder">Result:</div>{" "}
           {message.message.length > 0 ? (
-            <div className={message.isWrong ? "danger" : ""}>
+            <a
+              href={message.message}
+              target="_blank"
+              className={message.isWrong ? "danger" : ""}
+            >
               {message.message}
-            </div>
+            </a>
           ) : undefined}
         </div>
       </div>
