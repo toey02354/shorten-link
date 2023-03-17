@@ -6,9 +6,8 @@ interface IMessage {
   message: string;
 }
 
-// const shortenPath = "http://localhost:4000/api/shorten" || location.href;
 const shortenPath =
-  "https://pants-sea-lion.cyclic.app/api/shorten" || location.href;
+  "https://fancy-ruby-dibbler.cyclic.app/" || location.href;
 
 function App() {
   const [message, setMessage] = useState<IMessage>({
