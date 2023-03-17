@@ -1,6 +1,6 @@
 # Demo App
 
-https://pants-sea-lion.cyclic.app/
+[https://pants-sea-lion.cyclic.app/](https://fancy-ruby-dibbler.cyclic.app/)
 
 ลูกเล่นที่เพิ่มเข้ามาคือ หาก url มีใน database อยู่แล้ว  
 จะส่ง shortUrl ที่มีอยู่แล้วไปให้ (จะไม่สร้าง record ใหม่)
